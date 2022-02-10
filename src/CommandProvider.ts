@@ -92,6 +92,40 @@ commandList.push(
 	})
 );
 
+/**
+ * 制作table字符串
+ * @param row 行数
+ * @param col 列数
+ * @param align 对齐方式 0:居中,1:居左,2:居右
+ * @returns table字符串
+ */
+function makeTable(row: number, col: number, align: number): string {
+	// 构造插入的内容,一个格子4个空
+	let content: string = "";
+	// 插入首行
+	content += "|";
+	for (let i = 0; i < col; i++) {
+		content += "    |";
+	}
+	content += "\n";
+	// 插入对齐行
+	content += "|";
+	let alignStr: string = align == 0 ? ":--:" : align == 1 ? ":---" : "---:";
+	for (let i = 0; i < col; i++) {
+		content += alignStr + "|";
+	}
+	content += "\n";
+	// 插入内容行
+	for (let i = 0; i < row - 1; i++) {
+		content += "|";
+		for (let j = 0; j < col; j++) {
+			content += "    |";
+		}
+		content += "\n";
+	}
+	return content;
+}
+
 // add_table
 commandList.push(
 	// 添加表格
@@ -122,29 +156,50 @@ commandList.push(
 			align = isNaN(Number(res)) ? align : Number(res);
 			// 检查行列必须大于0
 			if (row <= 0 || col <= 0 || align < 0 || align > 2) throw "input error";
-			// 构造插入的内容,一个格子4个空
-			let content: string = "";
-			// 插入首行
-			content += "|";
-			for (let i = 0; i < col; i++) {
-				content += "    |";
+			// 插入视图
+			vscode.window.activeTextEditor?.edit((editBuilder) => {
+				let [st_line, ...rest] = getTextEditorPosition();
+
+				editBuilder.insert(new vscode.Position(st_line + 1, 0), makeTable(row, col, align));
+			});
+		})
+	})
+);
+
+// add_badge
+commandList.push(
+	// 添加徽章
+	vscode.commands.registerCommand("add_badge", (label, content) => {
+		let _label: string = "label";
+		let _msg: string = "message";
+		let _style: string = "brightgreen";
+		// 用户输入
+		vscode.window.showInputBox({
+			placeHolder: '请输入label信息,如"下载量","访问量"...,默认为"label"'
+		}).then(res => {
+			if (res == undefined) throw "no input";
+			else {
+				_label = res == "" ? _label : res;
+				return vscode.window.showInputBox({
+					placeHolder: '请输入message信息,如"10k"...,默认为"message"'
+				})
 			}
-			content += "\n";
-			// 插入对齐行
-			content += "|";
-			let alignStr: string = align == 0 ? ":--:" : align == 1 ? ":---" : "---:";
-			for (let i = 0; i < col; i++) {
-				content += alignStr + "|";
+		}).then(res => {
+			if (res == undefined) throw "no input";
+			else {
+				_msg = res == "" ? _msg : res;
+				return vscode.window.showQuickPick([
+					'brightgreen', 'yellow', 'orange', 'red', 'blue', 'success', 'important', 'critical', 'informational', 'blueviolet'
+				], {
+					canPickMany: false,
+					placeHolder: '请选择颜色'
+				})
 			}
-			content += "\n";
-			// 插入内容行
-			for (let i = 0; i < row - 1; i++) {
-				content += "|";
-				for (let j = 0; j < col; j++) {
-					content += "    |";
-				}
-				content += "\n";
-			}
+		}).then(res => {
+			_style = res == undefined ? _style : res;
+			// 构造内容
+			let content: string = "![](https://img.shields.io/badge/" + _label + "-" + _msg + "-" + _style + ")";
+
 			// 插入视图
 			vscode.window.activeTextEditor?.edit((editBuilder) => {
 				let [st_line, ...rest] = getTextEditorPosition();
