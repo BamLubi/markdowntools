@@ -35,6 +35,7 @@ export const ALL_ITEMS = {
         ["目录", CState.None, "toc", "[TOC]", "add_front_fixed", "[TOC]\n\n"],
         ["图片", CState.None, "image", "![ ]( )", "add_image", "![title](uri)"],
         ["分割线", CState.None, "divider", "> ", "add_nxt_fixed", "\n-----\n\n"],
+        ["徽章", CState.None, "badge", "", "add_badge", ""],
     ],
     "v-math": [
         ["在线公式设计", CState.None, "", "www.latexlive.com", "nav_web", "https://www.latexlive.com"],
