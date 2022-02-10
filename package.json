@@ -10,7 +10,7 @@
   "publisher": "bamlubi",
   "keywords": ["markdown", "tools"],
   "icon": "dist/assets/logo.png",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "LICENSE",
   "repository": {
     "type": "github",
@@ -33,7 +33,8 @@
     "onCommand:add_nxt_fixed",
     "onCommand:nav_web",
     "onCommand:add_image",
-    "onCommand:add_table"
+    "onCommand:add_table",
+    "onCommand:add_badge"
   ],
   "main": "./dist/extension.js",
   "contributes": {
