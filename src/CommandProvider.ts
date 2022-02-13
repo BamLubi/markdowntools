@@ -15,8 +15,8 @@ function getTextEditorPosition(): number[] {
 	let ed_line: number = <number>(vscode.window.activeTextEditor?.selection.end.line);
 	let ed_character: number = <number>(vscode.window.activeTextEditor?.selection.end.character);
 
-	console.log("添加文字-start", st_line, st_character);
-	console.log("添加文字-end", ed_line, ed_character);
+	// console.log("添加文字-start", st_line, st_character);
+	// console.log("添加文字-end", ed_line, ed_character);
 
 	return [st_line, ed_line, st_character, ed_character];
 }

@@ -36,6 +36,7 @@ export const ALL_ITEMS = {
         ["图片", CState.None, "image", "![ ]( )", "add_image", "![title](uri)"],
         ["分割线", CState.None, "divider", "> ", "add_nxt_fixed", "\n-----\n\n"],
         ["徽章", CState.None, "badge", "", "add_badge", ""],
+        ["按键", CState.None, "button", "<kbd></kbd>", "add_both_fixed", "<kbd>", "</kbd>"]
     ],
     "v-math": [
         ["在线公式设计", CState.None, "", "www.latexlive.com", "nav_web", "https://www.latexlive.com"],
@@ -49,6 +50,66 @@ export const ALL_ITEMS = {
         ["自然", CState.Collapsed, "", ""],
         ["地点", CState.Collapsed, "", ""],
         ["符号", CState.Collapsed, "", ""]
+    ],
+    "v-flow": [
+        ["标准流程图", CState.None, "flow", "", "add_nxt_fixed", `\`\`\`flow
+st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st->op->cond
+cond(yes)->io->e
+cond(no)->sub1(right)->op
+\`\`\`
+`],
+        ["标准横向流程图", CState.None, "flow", "", "add_nxt_fixed", `\`\`\`flow
+st=>start: 开始框
+op=>operation: 处理框
+cond=>condition: 判断框(是或否?)
+sub1=>subroutine: 子流程
+io=>inputoutput: 输入输出框
+e=>end: 结束框
+st(right)->op(right)->cond
+cond(yes)->io(bottom)->e
+cond(no)->sub1(right)->op
+\`\`\`
+`],
+        ["时序图", CState.None, "seq", "", "add_nxt_fixed", `\`\`\`sequence
+Title: 标题：时序图
+对象A->对象B: 对象B你好吗?（请求）
+Note right of 对象B: 对象B的描述
+Note left of 对象A: 对象A的描述(提示)
+对象B-->对象A: 我很好(响应)
+对象B->小三: 你好吗
+小三-->>对象A: 对象B找我了
+对象A->对象B: 你真的好吗？
+Note over 小三,对象B: 我们是朋友
+participant C
+Note right of C: 没人陪我玩
+\`\`\`
+`],
+        ["甘特图", CState.None, "gantt", "", "add_nxt_fixed", `\`\`\`mermaid
+gantt
+dateFormat YYYY-MM-DD
+title 软件开发甘特图
+section 设计
+需求    :done,      des1,       2022-01-06,2022-01-08
+原型    :active,    des2,       2022-01-09, 3d
+UI设计  :des3,      after des2, 5d
+
+section 开发
+设计框架    :crit,  done,   after des2, 2d
+开发系统    :crit,  active, 3d
+未来任务    :crit,  5d
+
+section 测试
+功能测试    :active,    a1, after des3, 3d
+压力测试    :after a1,  20h
+测试报告    :48h
+\`\`\`
+`]
     ]
 };
 
