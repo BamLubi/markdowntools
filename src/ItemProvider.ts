@@ -19,6 +19,7 @@ export const ALL_ITEMS = {
         ["三级标题", CState.None, "h3", "###", "add_front_fixed", "### "],
         ["粗体", CState.None, "B", "** **", "add_both_fixed", "**", "**"],
         ["斜体", CState.None, "I", "* *", "add_both_fixed", "*", "*"],
+        ["删除线", CState.None, "del", "~~ ~~", "add_both_fixed", "~~", "~~"],
         ["有序列表", CState.None, "youxu", "1. ", "add_front_fixed", "1. "],
         ["无序列表", CState.None, "wuxu", "- ", "add_front_fixed", "- "],
         ["待办", CState.None, "todo", "- [ ] ", "add_front_fixed", "- [ ] "],
@@ -77,14 +78,14 @@ cond(no)->sub1(right)->op
 \`\`\`
 `],
         ["时序图", CState.None, "seq", "", "add_nxt_fixed", `\`\`\`sequence
-Title: 标题：时序图
-对象A->对象B: 对象B你好吗?（请求）
+Title: 标题: 时序图
+对象A->对象B: 对象B你好吗?(请求)
 Note right of 对象B: 对象B的描述
 Note left of 对象A: 对象A的描述(提示)
 对象B-->对象A: 我很好(响应)
 对象B->小三: 你好吗
 小三-->>对象A: 对象B找我了
-对象A->对象B: 你真的好吗？
+对象A->对象B: 你真的好吗?
 Note over 小三,对象B: 我们是朋友
 participant C
 Note right of C: 没人陪我玩

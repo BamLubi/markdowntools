@@ -24,12 +24,18 @@ function getTextEditorPosition(): number[] {
 // add_both_fixed
 commandList.push(
 	// 添加在选中文字的两边，光标位置不动
-	vscode.commands.registerCommand("add_both_fixed", (label, ...content) => {
+	vscode.commands.registerCommand("add_both_fixed", (label, content_l, content_r) => {
+		// 快捷键匹配
+		if(label=="ctrl_b"){
+			content_l = content_r = "**";
+		}else if(label=="ctrl_i"){
+			content_l = content_r = "*";
+		}
 		vscode.window.activeTextEditor?.edit((editBuilder) => {
 			let [st_line, ed_line, st_character, ed_character] = getTextEditorPosition();
 
-			editBuilder.insert(new vscode.Position(st_line, st_character), content[0]);
-			editBuilder.insert(new vscode.Position(ed_line, ed_character), content[1]);
+			editBuilder.insert(new vscode.Position(st_line, st_character), content_l);
+			editBuilder.insert(new vscode.Position(ed_line, ed_character), content_r);
 		});
 	})
 );
@@ -38,6 +44,14 @@ commandList.push(
 commandList.push(
 	// 添加该行的前面，光标位置不动
 	vscode.commands.registerCommand("add_front_fixed", (label, content) => {
+		// 快捷键匹配
+		if(label=="ctrl_1"){
+			content = "# ";
+		}else if(label=="ctrl_2"){
+			content = "## "
+		}else if(label=="ctrl_3"){
+			content = "### "
+		}
 		vscode.window.activeTextEditor?.edit((editBuilder) => {
 			let [st_line, ...rest] = getTextEditorPosition();
 
