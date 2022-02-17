@@ -5,12 +5,21 @@
 ## Features
 
 - Provides support for **common tags** such as titles, bold, tables, and images.
-- Contains common mathematical symbols in **Latex formulas**.
+- Contains common mathematical symbols in **Latex Formulas**.
 - Supports multiple **Emoji**.
 - Support for inserting **Badges**,**Buttons**,**FlowChart**.
-- Support for **designing formulas and selecting emoticons online** using the built-in browser.
+- Support for **designing Formulas and selecting Emoticons online** using the built-in browser.
+- Support some **Shortcut Keys**, see the comparison table for details.
 
 <img src="https://picgo-1256052225.cos.ap-guangzhou.myqcloud.com/img/202202101730715.png" style="zoom: 67%;" />
+
+## Shortcut Key
+
+-   Bold: <kbd>CTRL</kbd>+<kbd>B</kbd>
+-   Italics: <kbd>CTRL</kbd>+<kbd>I</kbd>
+-   H1: <kbd>CTRL</kbd>+<kbd>1</kbd>
+-   H2: <kbd>CTRL</kbd>+<kbd>2</kbd>
+-   H3: <kbd>CTRL</kbd>+<kbd>3</kbd>
 
 ## Requirements
 
@@ -23,6 +32,10 @@
 - The packaged extension is also available on [Github](https://github.com/BamLubi/markdowntools/releases).
 
 ## Release Notes
+
+### v0.1.4
+
+Support for some Shortcut Keys.
 
 ### v0.1.3
 
