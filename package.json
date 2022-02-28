@@ -35,11 +35,24 @@
     "onCommand:nav_web",
     "onCommand:add_image",
     "onCommand:add_table",
-    "onCommand:add_badge"
+    "onCommand:add_badge",
+    "onCommand:markdowntools.share"
   ],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [],
+    "commands": [{
+      "command": "markdowntools.share",
+      "title": "导出",
+      "icon": "dist/assets/share-dark.svg"
+    }],
+    "menus": {
+      "editor/title": [{
+          "when": "resourceLangId == markdown",
+          "command": "markdowntools.share",
+          "alt": "",
+          "group": "navigation"
+      }]
+    },
     "viewsContainers": {
       "activitybar": [
         {

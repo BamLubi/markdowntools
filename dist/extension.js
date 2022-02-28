@@ -352,13 +352,13 @@ commandList.push(
 // 添加该行的前面，光标位置不动
 vscode.commands.registerCommand("add_front_fixed", (label, content) => {
     // 快捷键匹配
-    if (label == "ctrl_1") {
+    if (label === "ctrl_1") {
         content = "# ";
     }
-    else if (label == "ctrl_2") {
+    else if (label === "ctrl_2") {
         content = "## ";
     }
-    else if (label == "ctrl_3") {
+    else if (label === "ctrl_3") {
         content = "### ";
     }
     vscode.window.activeTextEditor?.edit((editBuilder) => {
@@ -517,6 +517,12 @@ vscode.commands.registerCommand("add_badge", (label, content) => {
             editBuilder.insert(new vscode.Position(st_line + 1, 0), content);
         });
     });
+}));
+// markdowntools.share
+commandList.push(
+// 添加徽章
+vscode.commands.registerCommand("markdowntools.share", () => {
+    console.log("分享");
 }));
 /**
  * 网页跳转，内置浏览器
