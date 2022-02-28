@@ -1,3 +1,5 @@
+// TODO: md预览美化
+// TODO: ts代码修改以符合ESLint规格
 // 本文件存储插件中的命令操作
 import { isNumber } from "util";
 import * as vscode from "vscode";
@@ -45,12 +47,12 @@ commandList.push(
 	// 添加该行的前面，光标位置不动
 	vscode.commands.registerCommand("add_front_fixed", (label, content) => {
 		// 快捷键匹配
-		if(label=="ctrl_1"){
+		if(label==="ctrl_1"){
 			content = "# ";
-		}else if(label=="ctrl_2"){
-			content = "## "
-		}else if(label=="ctrl_3"){
-			content = "### "
+		}else if(label==="ctrl_2"){
+			content = "## ";
+		}else if(label==="ctrl_3"){
+			content = "### ";
 		}
 		vscode.window.activeTextEditor?.edit((editBuilder) => {
 			let [st_line, ...rest] = getTextEditorPosition();
@@ -176,7 +178,7 @@ commandList.push(
 
 				editBuilder.insert(new vscode.Position(st_line + 1, 0), makeTable(row, col, align));
 			});
-		})
+		});
 	})
 );
 
@@ -220,7 +222,16 @@ commandList.push(
 
 				editBuilder.insert(new vscode.Position(st_line + 1, 0), content);
 			});
-		})
+		});
+	})
+);
+
+// TODO: md文件导出成pdf或html格式
+// markdowntools.share
+commandList.push(
+	// 添加徽章
+	vscode.commands.registerCommand("markdowntools.share", ( ) => {
+		console.log("分享");
 	})
 );
 
