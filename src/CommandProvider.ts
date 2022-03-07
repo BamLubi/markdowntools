@@ -1,5 +1,4 @@
 // TODO: md预览美化
-// TODO: ts代码修改以符合ESLint规格
 // 本文件存储插件中的命令操作
 import { isNumber } from "util";
 import * as vscode from "vscode";
@@ -223,15 +222,6 @@ commandList.push(
 				editBuilder.insert(new vscode.Position(stLine + 1, 0), content);
 			});
 		});
-	})
-);
-
-// TODO: md文件导出成pdf或html格式
-// markdowntools.share
-commandList.push(
-	// 添加徽章
-	vscode.commands.registerCommand("markdowntools.share", ( ) => {
-		console.log("分享");
 	})
 );
 
