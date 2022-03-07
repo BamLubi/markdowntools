@@ -234,7 +234,7 @@ export { commandList };
 export function initWebViewCommand(): vscode.Disposable[] {
 	let commandList: vscode.Disposable[] = [];
 	commandList.push(vscode.commands.registerCommand("nav_web", (label, url) => {
-		const webView = createWebView(vscode.ViewColumn.Active, label, url);
+		const webView = createWebView(vscode.ViewColumn.Beside, label, url);
 		commandList.push(webView);
 	}));
 	return commandList;
