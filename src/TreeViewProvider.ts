@@ -16,13 +16,13 @@ class TreeItemNode extends TreeItem {
         // 共同属性
         this.label = <string>item[0];
         this.description = <string>item[3];
-        this.iconPath = <string>item[2] == "" ? undefined :{
+        this.iconPath = <string>item[2] === "" ? undefined :{
             light: Uri.file(join(__filename, '..', '..', 'dist', "assets", category, <string>item[2] + "-light.svg")),
             dark: Uri.file(join(__filename, '..', '..', 'dist', "assets", category, <string>item[2] + "-dark.svg"))
         };
 
         // 判断是否存在子项目
-        if (<CState>item[1] == CState.None) {
+        if (<CState>item[1] === CState.none) {
             // 不存在子项目
             // demo: ["一级标题", CState.None, "1.svg", "#", "add_front_fixed", "# "]
             let args: (string | CState)[];
@@ -37,7 +37,7 @@ class TreeItemNode extends TreeItem {
         } else {
             // 存在子项目
             // demo: ["粗体", "1.svg", "**content**", CState.Collapsed]
-            this.collapsibleState = <CState>item[1] == CState.Collapsed ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.Expanded;
+            this.collapsibleState = <CState>item[1] === CState.collapsed ? TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.Expanded;
             this.command = {
                 title: this.label,
                 command: '',
@@ -53,7 +53,7 @@ class TreeItemNode extends TreeItem {
  */
 class TreeViewProvider implements TreeDataProvider<TreeItemNode>{
 
-    constructor(public readonly category: string, public readonly ITEMS: (string | CState)[][]) { }
+    constructor(public readonly category: string, public readonly items: (string | CState)[][]) { }
 
     onDidChangeTreeData?: Event<TreeItemNode | null | undefined> | undefined;
 
@@ -63,9 +63,9 @@ class TreeViewProvider implements TreeDataProvider<TreeItemNode>{
     // 给每一项都创建一个 TreeItemNode
     getChildren(element?: TreeItemNode | undefined): ProviderResult<TreeItemNode[]> {
         if (element) {
-            return element.children.map(item => new TreeItemNode(this.category, item as (string | CState)[]))
+            return element.children.map(item => new TreeItemNode(this.category, item as (string | CState)[]));
         } else {
-            return this.ITEMS.map(item => new TreeItemNode(this.category, item as (string | CState)[]));
+            return this.items.map(item => new TreeItemNode(this.category, item as (string | CState)[]));
         }
     }
 }

@@ -22,7 +22,7 @@ export function createWebView(viewColumn: ViewColumn, label: string, url: string
                 retainContextWhenHidden: true,  // 是否保持webview面板的内容,即使面板不再可见
                 enableScripts: true             // html页是否可以使用Scripts
             }
-        )
+        );
         // 面板嵌入html
         webViewPanel.webview.html = getIframeHtml(url);
         // 添加进webViewMap
