@@ -1,6 +1,6 @@
 # MarkdownTools
 
-![](https://img.shields.io/badge/Install-100-green)
+![](https://img.shields.io/badge/Install-331-green)
 
 > A vscode extension used to write Markdown. This extension is dedicated to writing MD documents in a visual manner. The preview image is shown in the next section.
 
